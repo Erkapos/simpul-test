@@ -45,23 +45,23 @@ function App() {
   const task = [
     {
       check: false,
-      title: "title",
+      title: "Cross-reference with Jeanne for Case #192813",
       date: new Date(),
       desc: "",
       status: ["important", "client"],
     },
     {
-      check: false,
-      title: "title asdasddasasd",
+      check: true,
+      title: "Contact Andrew for Online Meeting and Conference",
       date: "",
       desc: "description aaaaaaaaaaaaaaaaaaaaaaaa",
       status: [],
     },
     {
       check: true,
-      title: "title zxcxczzxcczxcxz czxcxzczxczx",
+      title: "Check and Revise Homework from Andre Gonzales",
       date: "",
-      desc: "testing desc",
+      desc: "Homeworks needed to be checked are as follows : Client Profile Questionnaire, Passport Requirements and Images, Personal Documents.",
       status: ["asap"],
     },
     {
@@ -72,6 +72,8 @@ function App() {
       status: [],
     },
   ];
+
+  const [taskArr, setTaskArr] = useState(task);
 
   const post = [
     {
@@ -90,13 +92,13 @@ function App() {
     {
       title: "8405-Diana SALAZAR MUNGUIA",
       name: "Cammeron Phillips",
-      body: "I understand your initial concerns and thats very valid, Elizabeth. But you djsaiodasjd djsaiojdasiodsaj jdsaiojdasojdioa",
+      body: "I understand your initial concerns and thats very valid, Elizabeth. But you ...",
       date: "02/06/2021 10:45",
     },
     {
       title: "FastVisa Support",
-      name: "Hey there! Welcome to your inbox.",
-      body: "lalallaa",
+      name: "",
+      body: "Hey there! Welcome to your inbox.",
       date: "02/06/2021 10:45",
     },
   ];
@@ -128,7 +130,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="absolute bottom-0 right-0 flex justify-end items-end">
+      <div className="absolute bottom-3 right-4 flex justify-end items-center">
         {!isHidden &&
           button.map((each) => {
             return (
@@ -160,12 +162,15 @@ function App() {
                   }}
                 >
                   <>
+                    <img
+                      className="w-[60px] h-[60px] cursor-pointer"
+                      src={each.iconSmall}
+                    />
                     {showContent === "" && (
-                      <p className="mb-1 text-white font-bold text-medium">
+                      <p className="mb-1 text-white absolute -top-4 pl-3 text-center font-bold text-medium">
                         {each.label}
                       </p>
                     )}
-                    <img className="cursor-pointer" src={each.iconSmall} />
                   </>
                 </button>
               )
@@ -174,7 +179,7 @@ function App() {
 
         {currentButton === 0 ? (
           <img
-            className="cursor-pointer"
+            className="cursor-pointer h-[68px] w-[68px]"
             onClick={() => {
               setIsHidden(!isHidden);
             }}
@@ -183,7 +188,7 @@ function App() {
         ) : (
           currentIndex !== -1 && (
             <div className="cursor-pointer">
-              <div className="absolute right-3 h-[70px] w-[70px] rounded-full bg-[#4F4F4F]" />
+              <div className="absolute bottom-[8px] right-4 h-[62px] w-[62px] rounded-full bg-[#4F4F4F]" />
 
               <img
                 onClick={() => {
@@ -193,17 +198,17 @@ function App() {
                   setShowAdditionalContent(false);
                 }}
                 src={button[currentIndex].iconLarge}
-                className="relative"
+                className="relative  h-[68px] w-[68px]"
               />
             </div>
           )
         )}
       </div>
       {showContent !== "" && (
-        <div className="rounded-md mr-4 mb-16 absolute bottom-5 right-0 h-[737px] w-[734px] bg-white">
+        <div className="rounded-md mr-4 mb-16 absolute bottom-8 right-0 h-[737px] w-[734px] bg-white">
           <div className="h-[100%] flex flex-col">
             {showContent === "task-list" && (
-              <div className="w-full px-6 py-3 ">
+              <div className="w-full px-[32px] py-[24px] ">
                 <div className="w-full flex justify-between">
                   <Select
                     className="w-60 text-start"
@@ -215,12 +220,24 @@ function App() {
                   />
 
                   <button
+                    onClick={() => {
+                      setTaskArr((prevTasks) => [
+                        ...prevTasks,
+                        {
+                          check: false,
+                          title: "Type task title",
+                          date: "",
+                          desc: "",
+                          status: [],
+                        },
+                      ]);
+                    }}
                     className={`px-4 py-2 bg-[${colors.primary_blue}] text-white font-bold rounded-md`}
                   >
                     New Task
                   </button>
                 </div>
-                {task.map((each, i) => {
+                {taskArr.map((each, i) => {
                   return (
                     <TaskCard
                       index={i}
@@ -247,11 +264,11 @@ function App() {
                   }}
                 />
               ) : (
-                <div className="h-[100%] px-6 py-3">
+                <div className="h-[100%] px-[32px] py-[24px]">
                   <div className="flex items-center relative">
                     <input
                       placeholder="Search"
-                      className="border border-[#828282] rounded-md px-20 py-2 w-full text-start"
+                      className="border border-[#828282] rounded-md px-20 w-full text-start"
                     />
                     <svg
                       className="absolute right-14"

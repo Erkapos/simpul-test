@@ -31,9 +31,16 @@ function TaskCard(props) {
       className="flex items-center px-5 py-2 w-[193px] h-[40px]"
       onClick={onClick}
     >
-      <button className="example-custom-input" ref={ref}>
-        {value}
-      </button>
+      {value === "" ? (
+        <button className="cursor-pointer example-custom-input" ref={ref}>
+          Set Date
+        </button>
+      ) : (
+        <button className="cursor-pointer example-custom-input" ref={ref}>
+          {value}
+        </button>
+      )}
+
       <svg
         width="14"
         height="16"
@@ -54,7 +61,7 @@ function TaskCard(props) {
 
   return (
     <div>
-      <div className="flex my-4">
+      <div className="flex my-[22px]">
         <div className="flex gap-4 w-full text-start">
           <input
             type="checkbox"

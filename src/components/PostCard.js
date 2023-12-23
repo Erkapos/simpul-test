@@ -66,9 +66,12 @@ function PostCard(props) {
             </div>
 
             <div>
-              <p className={`text-[#4F4F4F] text-medium font-bold`}>
-                {props.index.name} :
-              </p>
+              {props.index.name !== "" && (
+                <p className={`text-[#4F4F4F] text-medium font-bold`}>
+                  {props.index.name} :
+                </p>
+              )}
+
               <p className={`text-[#4F4F4F] text-medium font-normal`}>
                 {props.index.body}
               </p>
