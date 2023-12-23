@@ -1,5 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  font-family: "Lato", "sans-serif";
+  color: #4f4f4f;
 }
 
 .App-logo {
