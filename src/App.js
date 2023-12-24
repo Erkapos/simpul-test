@@ -64,13 +64,6 @@ function App() {
       desc: "Homeworks needed to be checked are as follows : Client Profile Questionnaire, Passport Requirements and Images, Personal Documents.",
       status: ["asap"],
     },
-    {
-      check: false,
-      title: "title",
-      date: "",
-      desc: "desc 4 5 6",
-      status: [],
-    },
   ];
 
   const [taskArr, setTaskArr] = useState(task);
@@ -206,7 +199,7 @@ function App() {
       </div>
       {showContent !== "" && (
         <div className="rounded-md mr-4 mb-16 absolute bottom-8 right-0 h-[737px] w-[734px] bg-white">
-          <div className="h-[100%] flex flex-col">
+          <div className="h-[100%] overflow-auto flex flex-col">
             {showContent === "task-list" && (
               <div className="w-full px-[32px] py-[24px] ">
                 <div className="w-full flex justify-between">
